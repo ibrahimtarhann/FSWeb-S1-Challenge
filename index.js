@@ -146,18 +146,24 @@ const fenomenler = [
 /* Görev 1 (otomatik kontrol testi yapılmayacak):
 Aşağıdakileri konsolda gösterim (console.log) işlemi gerçekleştirerek, yukarıda verilen fenomenler dizisindeki verilere erişim alıştırması yapın:
 
+
 (işlev yazmanıza gerek yok) */
 
 //(1) Dizideki ilk fenomen (0. dizin) profil (profile) adı
-
+  console.log("HEDE",fenomenler[0].profile);
 
 //(2) Dizideki üçüncü fenomenin (2. dizin) takipçi (followers) sayısı
-
+  console.log("HEDE",fenomenler[2].followers);
 
 /* Görev 2 (otomatik kontrol testi yapılmayacak):
 (işlev yazmanıza gerek yok)
-Fenomenler dizisinde bir yazım hatası var 😱 7. sıradaki fenomen 'Justin Bieber' ın soyismi 'Biber' olarak yanlış yazılmış. Bu sorunu düzeltin ve çalışmanızı kontrol etmek için console.log() yapın.
+Fenomenler dizisinde bir yazım hatası var 😱 7. sıradaki fenomen 'Justin Bieber' ın soyismi 'Biber' olarak yanlış yazılmış. Bu sorunu düzeltin ve çalışmanızı kontrol etmek için console.log() yapın.*/
 
+  console.log("BEFORE",fenomenler[6].profile);
+
+  fenomenler[6].profile = "Justin Bieber;"
+
+  console.log("AFTER",fenomenler[6].profile);
 
 /*  Görev 3:
 Aşağıdaki işlemleri yapmak için indekseGoreFenomen işlevini kullanın:
@@ -165,14 +171,16 @@ Aşağıdaki işlemleri yapmak için indekseGoreFenomen işlevini kullanın:
 2. İkinci parametre de ise, dizide istenen feneomene ait indeksi gösteren bir sayıyı alın.
 3. `{indeks}. indekste bulunan fenomen: {profile}` şeklinde sonuç döndürün
 
+
+
 NOT: DÖNDÜĞÜNÜZ DİZİN YUKARIDAKİ BİÇİMLE EŞLEŞMESİ GEREKİR, YA DA TESTİ GEÇMEYECEKTİR!
 ÖRNEK: fenomenler dizisi ve 3 sayısı ile indekseGoreFenomen çağrılırsa, `3. indekste bulunan fenomen: Leo Messi' */
 
-function indekseGoreFenomen(/*kod*/) {
-  /*kod*/
+function indekseGoreFenomen(profilArray, profilIndex) {
+  return `${profilIndex}. indekste bulunan fenomen: ${profilArray[profilIndex].profile}`;
 }
 
-
+console.log(indekseGoreFenomen(fenomenler, 5));
 
 /*  Görev 4:
 Aşağıdakileri yapmak için profilListesi'ni kullanın:
@@ -197,11 +205,19 @@ Aşağıdakileri yapmak için fenomenSil'i kullanın:
 5. Ortaya çıkan diziyi döndürün
 
 ÖRNEK: fenomenSil işlevi fenomenler dizisi ve 0 indeks sayısı ile çağrılırsa, veri kümemizden 'Instagram' kaldırılmış olarak döndürür. */
-function fenomenSil(/*kod*/) {
-  /*kod*/
+function fenomenSil(profilArray, index) {
+  const sonuc = [];
+
+  for (let i = 0; i < profilArray.length; i++) {
+    
+    if (i !== index) {
+      sonuc.push(profilArray[i]);
+    }
+  }
+  return sonuc;
 }
-
-
+// 4 verilirse 4.indexteki hariç hepsini yeni bir arraya ekleyecek.
+fenomenSil(fenomenler,4)
 
 /* Görev 6:
 Aşağıdakileri yapmak için fenomenEkle'i kullanın:
@@ -220,8 +236,17 @@ Aşağıdakileri yapmak için fenomenEkle'i kullanın:
 
 ÖRNEK: fenomenEkle(fenomenler, 6, "Workintech", 10000000, 2022, "Instagram") çağrıldığında dizinin sonuna yukarıdaki nesne en sona eklenerek yeni fenomenler dizisini döndürmelidir. */
 
-function fenomenEkle(/*kod*/) {
-  /*kod*/
+function fenomenEkle(fenomenler, number, profile, followers, posts, platform) {
+  const kfenomenler = [...fenomenler];
+  const nesne = {
+    "number": 6,
+    "profile": "Workintech",
+    "followers": 10000000,
+    "posts": 2022,
+    "platform": "Instagram"
+  }
+
+  const kyeni = [...fenomenler, {...kfenomenler}];
 }
 
 
